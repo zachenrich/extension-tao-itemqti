@@ -129,6 +129,14 @@ define(['jquery', 'lodash'], function($, _){
 
             return State;
         },
+        /**
+         * Extend the widget
+         * 
+         * @param {Object} State - the parent State object to extend from
+         * @param {Function} [init] - the method to be called when the widget enters the state
+         * @param {Function} [exit] - the method to be called when the widget leaves the state
+         * @returns {Object}
+         */
         extend : function(State, init, exit){
 
             var Clone = null, initFn, exitFn;
@@ -164,7 +172,15 @@ define(['jquery', 'lodash'], function($, _){
 
             return Clone;
         },
-        createBundle : function(arg0, arg1, arg2){
+        /**
+         * Create a new state bundles from various object in arguments
+         * 
+         * @param {Object} _stateBundle - the stateBundle to be extended
+         * @param {Object} _newStates - the array of new states to be added to the new state bundle
+         * @param {Array} [_excluded] - the array of states to be excluded, e.g. ['answer', 'correct', 'map']
+         * @returns {Object} The new states bundle
+         */
+        createBundle : function(_stateBundle, _newStates, _excluded){
 
             var stateBundle = {},
                 newStates = [],
@@ -191,6 +207,11 @@ define(['jquery', 'lodash'], function($, _){
 
             return stateBundle;
         },
+        /**
+         * Call this method to throw a commonly formatted js error
+         * @param {String} functionName
+         * @throws a js Error with the name of the function
+         */
         throwMissingRequiredImplementationError : function(functionName){
             throw new Error('Missing required implementation of the function ' + functionName + '()');
         }
