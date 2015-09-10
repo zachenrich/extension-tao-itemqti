@@ -95,7 +95,10 @@ define([
                 });
 
                 //update the resolver baseUrl
-                _creatorRenderer.getAssetManager().setData({baseUrl : config.properties.baseUrl || '' });
+                _creatorRenderer.getAssetManager().setData({
+                    baseUrl : config.properties.baseUrl || '',
+                    encode : true
+                });
 
             }
         }

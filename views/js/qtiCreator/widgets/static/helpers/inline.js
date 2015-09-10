@@ -12,23 +12,20 @@ define([
 
     //only valid for a state
     var inlineHelper = {
-        checkFileExists : function(widget, fileSrcAttrName, baseUrl){
+        checkFileExists : function(widget, fileSrcAttrName){
 
             var element = widget.element;
 
+            debugger;
             validators.validators.fileExists.validate(
-                element.attr(fileSrcAttrName),
+                element.renderer.resolveUrl(element.attr(fileSrcAttrName)),
                 function(fileExists){
                     if(!fileExists){
                         //clear value:
                         element.attr(fileSrcAttrName, '');
                         inlineHelper.togglePlaceholder(widget);
                     }
-                },
-                {
-                    baseUrl : baseUrl || ''
                 });
-
         },
         togglePlaceholder : function(widget, opts){
 
@@ -39,7 +36,7 @@ define([
 
             var $container = options.container;
             var $placeholder = $container.siblings('.dummy-element');
-            
+
             if(widget.element.isEmpty()){
 
                 $container.hide();
@@ -52,7 +49,7 @@ define([
                 $placeholder.show();
 
             }else{
-                
+
                 $container.show();
                 $placeholder.hide();
             }

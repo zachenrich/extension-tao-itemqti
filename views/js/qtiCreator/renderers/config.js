@@ -30,7 +30,10 @@ define([
         assetStrategies.external,
         assetStrategies.base64,
         assetStrategies.baseUrl
-    ], {baseUrl : ''});
+    ], {
+        baseUrl : '',
+        encode : true
+    });
 
     var locations = _.defaults({
         '_container' : 'taoQtiItem/qtiCreator/renderers/Container',

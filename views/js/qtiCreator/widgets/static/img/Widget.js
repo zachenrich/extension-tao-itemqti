@@ -7,6 +7,7 @@ define([
     'taoQtiItem/qtiCreator/widgets/static/helpers/inline',
     'taoQtiItem/qtiItem/helper/util'
 ], function($, Widget, states, helper, toolbarTpl, inlineHelper, itemUtil){
+    'use strict';
 
     var ImgWidget = Widget.clone();
 
@@ -23,8 +24,9 @@ define([
         inlineHelper.togglePlaceholder(this);
 
         //check file exists:
-        inlineHelper.checkFileExists(this, 'src', options.baseUrl);
+        inlineHelper.checkFileExists(this, 'src');
         $('#item-editor-scope').on('filedelete.resourcemgr.' + this.element.serial, function(e, src){
+            console.log('on delete', src, img.attr('src'));
             if(itemUtil.fullpath(img.attr('src'), baseUrl) === itemUtil.fullpath(src, baseUrl)){
                 img.attr('src', '');
                 inlineHelper.togglePlaceholder(_this);
